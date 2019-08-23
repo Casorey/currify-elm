@@ -41,9 +41,16 @@ checkName : String -> String -> Bool
 checkName text name = contains text name
 
 -- Recibe un id y tiene que likear/dislikear una cancion
--- switchear song.liked SEGUIR ACA
+-- switchear song.liked 
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = songs
+toggleLike id songs = if (findWithID id songs).liked then dislike song else like song
+
+like : Song -> Song
+like song = {song |liked = True}
+
+dislike : Song -> Song
+dislike song = {song |liked = False}
+
 
 -- Esta funcion tiene que decir si una cancion tiene
 -- nuestro like o no, por ahora funciona mal...
@@ -54,15 +61,15 @@ isLiked song = song.liked
 -- Recibe una lista de canciones y nos quedamos solo con las que
 -- tienen un like
 filterLiked : List Song -> List Song
-filterLiked songs = songs
+filterLiked songs = filter isLiked songs
 
 -- Agrega una cancion a la cola de reproduccion
 -- (NO es necesario preocuparse porque este una sola vez)
 addSongToQueue : Song -> List Song -> List Song
-addSongToQueue song queue = queue
+addSongToQueue song queue = queue ++ [song]
 
 -- Saca una cancion de la cola
--- (NO es necesario que se elimine una sola vez si esta repetida)
+-- (NO es necesario que se elimine una sola vez si esta repetida) SEGUIR ACA
 removeSongFromQueue : String -> List Song -> List Song
 removeSongFromQueue id queue = queue
 
