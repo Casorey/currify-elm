@@ -22,10 +22,10 @@ import String exposing(contains)
 
 -- Debería darnos la url de la cancion en base al id
 urlById : String -> List Song -> String
-urlById idSong songs = (findWithID idSong songs ).url
+urlById idSong songs = (findWithId idSong songs ).url
 
-findWithID : String -> List Song -> Song
-findWithID idSong songs = findSong (checkId idSong) songs
+findWithId : String -> List Song -> Song
+findWithId idSong songs = findSong (checkId idSong) songs
 
 checkId : String -> Song -> Bool
 checkId idSong song = (idSong == song.id)
@@ -43,7 +43,7 @@ checkName text name = contains text name
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked 
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = map (changeLike ) (filter (findWithID id) songs)
+toggleLike id songs = map (changeLike ) (filter (checkId id) songs)
 
 changeLike : Song -> Song
 changeLike song = if song.liked then dislike song else like song
