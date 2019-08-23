@@ -43,10 +43,10 @@ checkName text name = contains text name
 -- Recibe un id y tiene que likear/dislikear una cancion
 -- switchear song.liked 
 toggleLike : String -> List Song -> List Song
-toggleLike id songs = map (changeSongLike id) songs
+toggleLike id songs = map (changeLike ) (filter (findWithId id) songs)
 
-changeSongLike : String ->  List Song -> Song -> Song
-changeSongLike id songs song = if (findWithID id songs).liked then dislike song else like song
+changeLike : Song -> Song
+changeLike song = if song.liked then dislike song else like song
 
 like : Song -> Song
 like song = {song |liked = True}
