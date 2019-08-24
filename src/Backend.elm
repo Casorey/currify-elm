@@ -72,11 +72,11 @@ addSongToQueue : Song -> List Song -> List Song
 addSongToQueue song queue = queue ++ [song]
 
 -- Saca una cancion de la cola
--- (NO es necesario que se elimine una sola vez si esta repetida) SEGUIR ACA
+-- (NO es necesario que se elimine una sola vez si esta repetida) 
 removeSongFromQueue : String -> List Song -> List Song
-removeSongFromQueue id queue = queue
+removeSongFromQueue id queue = filter (not (checkId id)) queue
 
--- Hace que se reproduzca la canción que sigue y la saca de la cola
+-- Hace que se reproduzca la canción que sigue y la saca de la cola SEGUIR ACA
 playNextFromQueue : Model -> Model
 playNextFromQueue model = model
 
