@@ -76,9 +76,9 @@ addSongToQueue song queue = queue ++ [song]
 removeSongFromQueue : String -> List Song -> List Song
 removeSongFromQueue id queue = filter (not (checkId id)) queue
 
--- Hace que se reproduzca la canción que sigue y la saca de la cola SEGUIR ACA
+-- Hace que se reproduzca la canción que sigue y la saca de la cola 
 playNextFromQueue : Model -> Model
-playNextFromQueue model = model
+playNextFromQueue model = { model | queue = tailsafe model.queue}
 
 -------- Funciones Listas --------
 
