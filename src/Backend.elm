@@ -73,8 +73,13 @@ addSongToQueue song queue = queue ++ [song]
 
 -- Saca una cancion de la cola
 -- (NO es necesario que se elimine una sola vez si esta repetida) 
+-- removeSongFromQueue id queue = filter (not (checkId id)) queue queria usar esto pero al not no le gusta
+-- es porque no es lazy evaluation?
 removeSongFromQueue : String -> List Song -> List Song
-removeSongFromQueue id queue = filter (not (checkId id)) queue
+removeSongFromQueue id queue = filter (doesntCheckId id) queue
+
+doesntCheckId : String -> Song -> Bool
+doesntCheckId idSong song = (idSong /= song.id)
 
 -- Hace que se reproduzca la canción que sigue y la saca de la cola 
 playNextFromQueue : Model -> Model
