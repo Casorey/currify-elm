@@ -3,7 +3,7 @@ import Types exposing(Song)
 
 import Utils exposing (..)
 import Models exposing (Model)
-import List exposing (range, map, filter,concat )
+import List exposing (map, filter,concat )
 import String exposing(contains)
 
 -- Existe la funcion findSong que recibe
